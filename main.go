@@ -1,5 +1,21 @@
 package main
 
+// @title Gorm Api play
+// @version 1.0
+// @description Investigant...
+
+// @contact.url https://js.gl
+// @contact.email js@js.gl
+
+// @host localhost:1323
+// @BasePath /
+
+// @securityDefinitions.basic BasicAuth
+
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name Authorization
+
 import (
 	"fmt"
 	"net/http"
@@ -8,7 +24,9 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	echoSwagger "github.com/swaggo/echo-swagger"
 	"github.com/warlock/webframerest/database"
+	_ "github.com/warlock/webframerest/docs"
 	"github.com/warlock/webframerest/user"
 )
 
@@ -45,6 +63,7 @@ func main() {
 	defer database.DBConn.Close()
 
 	setupRoutes(e)
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }

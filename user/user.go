@@ -4,20 +4,26 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/jinzhu/gorm"
 	"github.com/labstack/echo/v4"
 	"github.com/warlock/webframerest/database"
 )
 
-// User ...
+// User struct
+// swagger:model
 type User struct {
-	gorm.Model
+	ID      uint   `gorm:"primary_key"`
 	Name    string `json:"name"`
 	Surname string `json:"surname"`
 	Rating  int    `json:"rating"`
 }
 
-// GetUsers ...
+// GetUsers godoc
+// @Summary List users
+// @Description get users
+// @Tags users
+// @Produce  json
+// @Router /users [get]
+// @Success 200 {array} User
 func GetUsers(c echo.Context) error {
 	db := database.DBConn
 	var users []User
@@ -25,7 +31,15 @@ func GetUsers(c echo.Context) error {
 	return c.JSON(http.StatusOK, &users)
 }
 
-// GetUser ...
+// GetUser godoc
+// @Summary List user
+// @Description get user
+// @Tags users
+// @Produce  json
+// @ID get-string-by-int
+// @Param id path int true "Account ID"
+// @Router /user/{id} [get]
+// @Success 200 {object} User
 func GetUser(c echo.Context) error {
 	id := c.Param("id")
 	db := database.DBConn
@@ -37,7 +51,13 @@ func GetUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, &user)
 }
 
-// CreateUser ...
+// CreateUser godoc
+// @Summary Create a user
+// @Description Create a new user item
+// @Tags users
+// @Accept json
+// @Produce json
+// @Param user body User true "New User"
 func CreateUser(c echo.Context) error {
 	db := database.DBConn
 	var user User

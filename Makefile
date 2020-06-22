@@ -8,4 +8,7 @@ compile:
 	GOOS=linux GOARCH=386 go build -o bin/main-linux-386 main.go
 	GOOS=windows GOARCH=386 go build -o bin/main-windows-386 main.go
 
-all: hello build
+doc: 
+	swag init
+
+all: hello doc build
