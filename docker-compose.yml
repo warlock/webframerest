@@ -1,6 +1,6 @@
 version: "3"
 
 services:
-  igworker:
+  webframerest:
     build: .
-    image: warlock/webframeres:latest
+    image: warlock/webframerest:latest
