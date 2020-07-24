@@ -1,0 +1,6 @@
+version: "3"
+
+services:
+  igworker:
+    build: .
+    image: warlock/webframeres:latest

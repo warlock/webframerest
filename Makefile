@@ -1,5 +1,5 @@
 build:
-	go build -ldflags "-s -w" -o bin/darwin main.go
+	go build -ldflags "-s -w" -o bin/main main.go
 
 freebsd:
 	GOOS=freebsd GOARCH=386 go build -o bin/main-freebsd-386 main.go
