@@ -19,7 +19,7 @@ jobs:
     - uses: mr-smithers-excellent/docker-build-push@v4
       name: Build & push Docker image
       with:
-        image: github-repo/gowebframerest:$(date +%s)
+        image: gowebframerest:$(date +%s)
         registry: docker.pkg.github.com
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }} 
