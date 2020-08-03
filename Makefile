@@ -16,6 +16,6 @@ windows:
 doc: 
 	go get github.com/swaggo/swag/cmd/swag
 	go get -u github.com/swaggo/echo-swagger
-	swag init
+	swag init -g cmd/main.go
 
 all: doc build

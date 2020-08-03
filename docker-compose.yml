@@ -6,3 +6,5 @@ services:
     image: warlock/webframerest:latest
     ports:
       - "4000:4000"
+    volumes:
+      - "./tmp:/data"

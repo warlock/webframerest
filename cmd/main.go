@@ -40,7 +40,7 @@ func setupRoutes(e *echo.Echo) {
 
 func initDatabse() {
 	var err error
-	database.DBConn, err = gorm.Open("sqlite3", "users.db")
+	database.DBConn, err = gorm.Open("sqlite3", "/tmp/db.db")
 	if err != nil {
 		panic("Failed to connect to database")
 	}
@@ -65,5 +65,5 @@ func main() {
 	setupRoutes(e)
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":4000"))
 }
