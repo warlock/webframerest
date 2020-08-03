@@ -4,3 +4,5 @@ services:
   webframerest:
     build: .
     image: warlock/webframerest:latest
+    ports:
+      - "4000:4000"

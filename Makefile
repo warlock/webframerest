@@ -1,14 +1,17 @@
-build:
-	go build -ldflags "-s -w" -o bin/main main.go
+run:
+	go run cmd/main.go
 
-freebsd:
-	GOOS=freebsd GOARCH=386 go build -o bin/main-freebsd-386 main.go
+build:
+	go build -ldflags "-s -w" -o bin/main cmd/main.go
+
+darwin:
+	GOOS=darwin GOARCH=amd64 go build -ldflags "-s -w" -o bin/main cmd/main.go
 
 linux:
-	GOOS=linux GOARCH=386 go build -o bin/main-linux-386 main.go
+	GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o bin/main cmd/main.go
 
 windows:
-	GOOS=windows GOARCH=386 go build -o bin/main-windows-386 main.go
+	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/main cmd/main.go
 
 doc: 
 	go get github.com/swaggo/swag/cmd/swag
