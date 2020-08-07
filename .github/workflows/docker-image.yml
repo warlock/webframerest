@@ -20,4 +20,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
           repository: warlock/webframerest/webframerest
-          tags: "${{ env.RELEASE_VERSION }}"
+          tag_with_sha: true
